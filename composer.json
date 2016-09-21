@@ -10,6 +10,7 @@
     }
   ],
   "require": {
-    "phpmailer/phpmailer": "v5.2.16"
+    "phpmailer/phpmailer": "v5.2.16",
+    "vlucas/valitron": "1.1.7"
   }
 }
