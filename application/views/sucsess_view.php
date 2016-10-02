@@ -7,6 +7,7 @@
                 <div class="row">
                     <div class="form-group col-md-10 col-md-offset-1"
                         <label for="login" style="text-align: center">Подзравляем!<br>Вы успешно зарегестрировались!</label>
+                        <p>На ваш почтовый яшик отправлено письмо с вашими регитсрационными данными</p>
                     </div>
 
                     <input type="submit" class="col-md-6 btn btn-xs btn-success col-md-offset-3" value="Супер =)" name="setLogin">

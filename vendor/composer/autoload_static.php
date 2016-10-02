@@ -14,6 +14,13 @@ class ComposerStaticInit9ef418383fdfbb304d0ef2207cc96e74
                 0 => __DIR__ . '/..' . '/vlucas/valitron/src',
             ),
         ),
+        'T' => 
+        array (
+            'Twig_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/twig/lib',
+            ),
+        ),
     );
 
     public static $classMap = array (

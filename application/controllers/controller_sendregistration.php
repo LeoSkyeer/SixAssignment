@@ -72,10 +72,10 @@ Class controller_sendregistration extends Controller{
             require 'vendor/autoload.php';
             $mail = new PHPMailer;
 
-            $mail->isSMTP();                                      // Set mailer to use SMTP
+            $mail->isSMTP();            // Set mailer to use SMTP
             $mail->Host = 'smtp.mail.ru';  // Specify main and backup SMTP servers
-            $mail->SMTPAuth = true;                               // Enable SMTP authentication
-            $mail->Username = 'oblachnyy.leopold@mail.ru';                 // SMTP username
+            $mail->SMTPAuth = true;     // Enable SMTP authentication
+            $mail->Username = 'oblachnyy.leopold@mail.ru';              // SMTP username
             $mail->Password = '478951236aA';                           // SMTP password
             $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 465;                                    // TCP port to connect to
@@ -112,7 +112,7 @@ Class controller_sendregistration extends Controller{
             $this->send_email();
             $this->view->generate('sucsess_view.php', 'template_view.php');
         }else{
-            $this->view->generate('error_view.php', 'template_view.php');
+            $this->view->generate('again_view.php', 'template_view.php');
         }
     }
 }
