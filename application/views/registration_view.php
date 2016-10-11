@@ -59,8 +59,8 @@
             </div>
 
 <!--             Гугл Рекаптча-->
-            <div class="g-recaptcha" data-sitekey="6LfxTQcUAAAAAAgYCy7PKVA4IvM4oLfrVO1bivlS" style="align-content: center"></div>
-
+<!--            <div class="g-recaptcha" data-sitekey="6LfxTQcUAAAAAAgYCy7PKVA4IvM4oLfrVO1bivlS" style="align-content: center"></div>-->
+            <div class="g-recaptcha" data-sitekey="6Lef8ggUAAAAAF-2WAiWi1c1FuRIzQv27peyc6Cj"></div>
 
             <!--Кнопка-->
             <div class="row">

@@ -54,10 +54,30 @@ Class controller_sendregistration extends Controller{
         }
     }
 
+//    private function twig(){
+//        require 'vendor/autoload.php';
+//        Twig_Autoloader::register();
+//
+//        try{
+//            $loader = new Twig_Loader_Filesystem('views');
+//            $twig = new Twig_Environment($loader);
+//            $template = $twig->loadTemplate('getlist_view.php');
+//            echo $template->render(array(
+//                'name'=>$this->insert_in_database(["name"]),
+//                'age'=> $this->insert_in_database(["age"]),
+//            ));
+//
+//        }catch (Exception $e){
+//            die('Error' . $e->getMessage());
+//        }
+//    }
+
+
+
     private function check_google_captcha()
     {
         if (isset($_POST['g-recaptcha-response']) && $_POST['g-recaptcha-response']) {
-            $secret = "6LfxTQcUAAAAAGgquzeyssmhaTsWEOLhGSG_GmK1";
+            $secret = "6Lef8ggUAAAAAJa2mqZaOKqUDhShltFSQCmtFJYr";
             $ip = $_SERVER['REMOTE_ADDR'];
             $captcha = $_POST['g-recaptcha-response'];
             $rsp = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$captcha&remoteip=$ip");
@@ -67,6 +87,7 @@ Class controller_sendregistration extends Controller{
             return false;
         }
     }
+
 
     private function send_email(){
             require 'vendor/autoload.php';
