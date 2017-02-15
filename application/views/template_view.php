@@ -17,10 +17,8 @@
 			<div id="header">
 				<div id="menu"">
 					<ul>
-						<li class="first active"><a href="/">Главная</a></li>
-						<li><a href="/registration">Регистрация</a></li>
-						<li><a href="/list">Список</a></li>
-						<li class="last"><a href="/contacts">Контакты</a></li>
+						<li class="first active"><a href="/tellbook">Справочник</a></li>
+						<li><a href="/registration">Добавление пользователей</a></li>
 					</ul>
 					<br class="clearfix" />
 				</div>
@@ -28,12 +26,10 @@
 			<div id="page" >
 				<div id="sidebar"  >
 					<div class="side-box">
-						<h3>Основное меню</h3>
+						<h3>Меню</h3>
 						<ul class="list">
-							<li class="first "><a href="/">Главная</a></li>
-							<li><a href="/registration">Регистрация</a></li>
-							<li><a href="/list">Список</a></li>
-							<li class="last"><a href="/contacts">Контакты</a></li>
+							<li class="first "><a href="/tellbook">Справочник</a></li>
+							<li><a href="/registration">Добавление пользователей</a></li>
 						</ul>
 					</div>
 				</div>
@@ -46,25 +42,9 @@
 				</div>
 				<br class="clearfix" />
 			</div>
-			<div id="page-bottom">
-				<div id="page-bottom-sidebar">
-					<h3>Наши контакты</h3>
-					<ul class="list">
-						<li>skypeid: Leo_Skyer-6-strings</li>
-						<li class="last">email: vasya_90@list.ru</li>
-					</ul>
-				</div>
-				<div id="page-bottom-content">
-					<h3>О Компании</h3>
-					<p>
-						«Гидра» — преступная организация, чьей главной целью является достижение мирового господства посредством террористических и подрывных методов, что приведёт к Новому мировому порядку. «Гидра» совершает теракты по всему миру: организацию финансирует лично Барон Штрукер, который пропагандирует нацистскую идеологию. Основным противником «Гидры» является ЩИТ, — международная антитеррористическая организация.
-					</p>
-				</div>
-				<br class="clearfix" />
-			</div>
-		</div>
+
 		<div id="footer">
-			<a href="/">Гидра</a> &copy; 2016</a>
+			<a href="/">Монастырев</a> &copy; 2017</a>
 		</div>
 	</body>
 </html>

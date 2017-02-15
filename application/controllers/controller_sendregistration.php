@@ -1,5 +1,6 @@
 <?php
-Class controller_sendregistration extends Controller{
+Class controller_sendregistration extends Controller
+{
     private $pdo;
     public $view;
 
@@ -9,7 +10,7 @@ Class controller_sendregistration extends Controller{
         try {
             $this->pdo = new PDO("mysql:host=localhost;dbname=Registration", 'root', '');
         } catch (PDOException $e) {
-            exit('ERROR.'.$e);
+            exit('ERROR.' . $e);
         }
     }
 
@@ -18,61 +19,19 @@ Class controller_sendregistration extends Controller{
 
     }
 
-    private function insert_in_database(){
-        if (isset($_POST['user_name']) && ($_POST['user_age']) && ($_POST['user_message'])) {
-            $stmt = $this->pdo->prepare("INSERT INTO Registration_Data (name, age, text) VALUES (:name, :age, :message)");
+    private function insert_in_database()
+    {
+        if (isset($_POST['user_name']) && ($_POST['user_age'])) {
+            $stmt = $this->pdo->prepare("INSERT INTO Registration_Data (name, age) VALUES (:name, :age)");
             $stmt->execute(array(
                 "name" => $_POST['user_name'],
-                "age" => $_POST['user_age'],
-                "message" => $_POST['user_message']
+                "age" => $_POST['user_age']
             ));
-
-            $path = 'photos/';
-            $ext = array_pop(explode('.', $_FILES['fileToUpload']['image'])); // расширение
-            $new_name = time() . '.' . $ext;
-            $full_path = $path . $new_name;
-            $name_in_db = substr($new_name, 0, -1);
-//                echo $name_in_db;
-            if ($_FILES['fileToUpload']['error'] == 0) {
-                if (substr($_FILES["fileToUpload"]["name"], -3) == "jpg" || substr($_FILES["file"]["name"], -3) == "png") {
-                    if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $full_path)) {
-                        echo "Регистрация прошла успешно";
-                    }
-                }
-            }
-
-            $stmt2 = $this->pdo->prepare("INSERT INTO Image_Data (user_id, image) VALUES ((SELECT id FROM Registration_Data WHERE NAME = :user_name), '".$name_in_db."')");
-            $stmt2->bindParam(':user_name', $_POST['user_name']);
-            $stmt2->execute();
-
-            $controller_name = 'application/controllers/controller_sendregistration.php';
-            $str = strtolower($controller_name);
-            new Controller_sendregistration($this->action_index());
-
         } else {
             echo "Error insert in Database";
         }
     }
-
-//    private function twig(){
-//        require 'vendor/autoload.php';
-//        Twig_Autoloader::register();
-//
-//        try{
-//            $loader = new Twig_Loader_Filesystem('views');
-//            $twig = new Twig_Environment($loader);
-//            $template = $twig->loadTemplate('getlist_view.php');
-//            echo $template->render(array(
-//                'name'=>$this->insert_in_database(["name"]),
-//                'age'=> $this->insert_in_database(["age"]),
-//            ));
-//
-//        }catch (Exception $e){
-//            die('Error' . $e->getMessage());
-//        }
-//    }
-
-
+    
 
     private function check_google_captcha()
     {
@@ -88,49 +47,11 @@ Class controller_sendregistration extends Controller{
         }
     }
 
-
-    private function send_email(){
-            require 'vendor/autoload.php';
-            $mail = new PHPMailer;
-
-            $mail->isSMTP();            // Set mailer to use SMTP
-            $mail->Host = 'smtp.mail.ru';  // Specify main and backup SMTP servers
-            $mail->SMTPAuth = true;     // Enable SMTP authentication
-            $mail->Username = 'oblachnyy.leopold@mail.ru';              // SMTP username
-            $mail->Password = '478951236aA';                           // SMTP password
-            $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-            $mail->Port = 465;                                    // TCP port to connect to
-
-            $mail->CharSet = 'UTF-8';
-            $mail->setFrom('oblachnyy.leopold@mail.ru', 'Leo');
-
-            $mail->addCC($_POST['user_email']);
-            $mail->isHTML(true);                                  // Set email format to HTML
-
-            $mail->Subject = 'Поздравляю ' . $_POST['user_name'] . ' с успешной регистрацией!';
-
-            $mail->Body = 'Твое имя: ' . ($_POST['user_name'])
-                . '<br>' . 'Твой возраст: ' . ($_POST['user_age']) . '<br>'
-                . 'Твоё сообщение: ' . ($_POST['user_message']) . '<br>';
-
-            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-            if (!$mail->send()) {
-                echo 'Message could not be sent.';
-                echo 'Mailer Error: ' . $mail->ErrorInfo;
-                echo "SPAM";
-            } else {
-                echo 'Message has been sent';
-            }
-}
-
     public function action_send_reg(){
 
         $is_captcha_succeed = $this->check_google_captcha();
-
         if ($is_captcha_succeed) {
             $this->insert_in_database();
-            $this->send_email();
             $this->view->generate('sucsess_view.php', 'template_view.php');
         }else{
             $this->view->generate('again_view.php', 'template_view.php');
